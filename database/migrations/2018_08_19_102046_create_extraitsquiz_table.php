@@ -17,14 +17,14 @@ class CreateExtraitsquizTable extends Migration
         Schema::create('extraitsquiz', function(Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('quizzes_id')->unsigned();
-            $table->foreign('quizzes_id')
+            $table->integer('quiz_id')->unsigned();
+            $table->foreign('quiz_id')
                   ->references('id')
                   ->on('quizzes')
                   ->onDelete('restrict')
                   ->onUpdate('restrict');
-            $table->integer('extraits_id')->unsigned();
-            $table->foreign('extraits_id')
+            $table->integer('extrait_id')->unsigned();
+            $table->foreign('extrait_id')
                   ->references('id')
                   ->on('extraits')
                   ->onDelete('restrict')
@@ -41,8 +41,8 @@ class CreateExtraitsquizTable extends Migration
     {
         //
         Schema::table('extraitsquiz', function(Blueprint $table) {
-            $table->dropForeign('extraitsquiz_quizzes_id_foreign');
-            $table->dropForeign('extraitsquiz_extraits_id_foreign');
+            $table->dropForeign('extraitsquiz_quizz_id_foreign');
+            $table->dropForeign('extraitsquiz_extrait_id_foreign');
         });
         Schema::drop('extraitsquiz');
     }

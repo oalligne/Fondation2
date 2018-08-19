@@ -19,8 +19,8 @@ class CreateMorceauxTable extends Migration
             $table->timestamps();
             $table->string('nom', 256);
             $table->date('date_creation');
-            $table->integer('compositeurs_id')->unsigned();
-            $table->foreign('compositeurs_id')
+            $table->integer('compositeur_id')->unsigned();
+            $table->foreign('compositeur_id')
                   ->references('id')
                   ->on('compositeurs')
                   ->onDelete('restrict')
@@ -37,7 +37,7 @@ class CreateMorceauxTable extends Migration
     {
         //
         Schema::table('morceaux', function(Blueprint $table) {
-            $table->dropForeign('morceaux_compositeurs_id_foreign');
+            $table->dropForeign('morceaux_compositeur_id_foreign');
         });
         Schema::drop('morceaux');
     }

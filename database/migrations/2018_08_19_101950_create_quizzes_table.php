@@ -20,8 +20,8 @@ class CreateQuizzesTable extends Migration
             $table->string('nom', 128);
             $table->string('difficulte', 64);
             $table->text('description');
-            $table->integer('typesquiz_id')->unsigned();
-            $table->foreign('typesquiz_id')
+            $table->integer('typequiz_id')->unsigned();
+            $table->foreign('typequiz_id')
                   ->references('id')
                   ->on('typesquiz')
                   ->onDelete('restrict')
@@ -38,7 +38,7 @@ class CreateQuizzesTable extends Migration
     {
         //
         Schema::table('quizzes', function(Blueprint $table) {
-            $table->dropForeign('quizzes_typesquiz_id_foreign');
+            $table->dropForeign('quizzes_typequiz_id_foreign');
         });
         Schema::drop('quizzes');
     }

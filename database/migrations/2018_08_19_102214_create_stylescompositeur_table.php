@@ -17,14 +17,14 @@ class CreateStylescompositeurTable extends Migration
         Schema::create('stylescompositeur', function(Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('compositeurs_id')->unsigned();
-            $table->foreign('compositeurs_id')
+            $table->integer('compositeur_id')->unsigned();
+            $table->foreign('compositeur_id')
                   ->references('id')
                   ->on('compositeurs')
                   ->onDelete('restrict')
                   ->onUpdate('restrict');
-            $table->integer('styles_id')->unsigned();
-            $table->foreign('styles_id')
+            $table->integer('style_id')->unsigned();
+            $table->foreign('style_id')
                   ->references('id')
                   ->on('styles')
                   ->onDelete('restrict')
@@ -41,8 +41,8 @@ class CreateStylescompositeurTable extends Migration
     {
         //
         Schema::table('stylescompositeur', function(Blueprint $table) {
-            $table->dropForeign('stylescompositeur_compositeurs_id_foreign');
-            $table->dropForeign('stylescompositeur_styles_id_foreign');
+            $table->dropForeign('stylescompositeur_compositeur_id_foreign');
+            $table->dropForeign('stylescompositeur_style_id_foreign');
         });
         Schema::drop('stylescompositeur');
     }

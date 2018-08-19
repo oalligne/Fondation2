@@ -21,8 +21,8 @@ class CreateExtraitsTable extends Migration
             $table->string('source', 256);
             $table->integer('debut')->unsigned();
             $table->integer('fin')->unsigned();
-            $table->integer('morceaux_id')->unsigned();
-            $table->foreign('morceaux_id')
+            $table->integer('morceau_id')->unsigned();
+            $table->foreign('morceau_id')
                   ->references('id')
                   ->on('morceaux')
                   ->onDelete('restrict')
@@ -39,7 +39,7 @@ class CreateExtraitsTable extends Migration
     {
         //
         Schema::table('extraits', function(Blueprint $table) {
-            $table->dropForeign('extraits_morceaux_id_foreign');
+            $table->dropForeign('extraits_morceau_id_foreign');
         });
         Schema::drop('extraits');
     }
