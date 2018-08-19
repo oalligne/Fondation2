@@ -12,5 +12,6 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('contact', 'ContactController@getForm');
-Route::post('contact', 'ContactController@postForm');
+Route::resource('compositeur', 'CompositeurController');
+
+//Route::post('contact', 'ContactController@postForm');
