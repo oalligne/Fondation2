@@ -13,5 +13,6 @@
 
 Route::get('/', 'HomeController@index');
 Route::resource('compositeur', 'CompositeurController');
+Route::resource('style', 'StyleController');
 
 //Route::post('contact', 'ContactController@postForm');
