@@ -35,6 +35,19 @@
 		       <li class="nav-item">
 		        <a class="nav-link" href="#">Compositeurs <span class="sr-only"></span></a>
 		      </li>
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Administration
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a class="dropdown-item" href="{{URL::route('compositeur.index')}}">Compositeurs</a>
+		          <a class="dropdown-item" href="{{URL::route('style.index')}}">Styles</a>
+		          <a class="dropdown-item" href="#">Morceaux</a>
+		          <a class="dropdown-item" href="#">Extraits</a>
+		          <a class="dropdown-item" href="#">Utilisateurs</a>
+		          <a class="dropdown-item" href="#">Quiz</a>
+		        </div>
+		      </li>
 		     </ul>
 		    <ul class="navbar-nav ml-auto">
 		      <li class="nav-item">

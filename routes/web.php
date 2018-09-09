@@ -14,5 +14,7 @@
 Route::get('/', 'HomeController@index');
 Route::resource('compositeur', 'CompositeurController');
 Route::resource('style', 'StyleController');
+Route::resource('morceau', 'MorceauController');
+Route::resource('extrait', 'ExtraitController');
 
 //Route::post('contact', 'ContactController@postForm');

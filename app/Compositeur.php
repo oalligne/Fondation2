@@ -16,4 +16,9 @@ class Compositeur extends Model
 	{
 		return $this->belongsToMany(Style::class);
 	} 
+
+	public function morceaux()
+	{
+		return $this->belongsToMany(Morceaux::class);
+	} 
 }
