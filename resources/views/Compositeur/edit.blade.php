@@ -36,7 +36,10 @@
 					  	{!! Form::text('url_photo', null, ['class' => 'form-control', 'placeholder' => 'url_photo']) !!}
 					  	{!! $errors->first('url_photo', '<small class="help-block">:message</small>') !!}
 					</div>
-						{!! Form::submit('Envoyer', ['class' => 'btn btn-primary pull-right']) !!}
+					<div class="form-group {{ $errors->has('styles') ? 'has-error' : '' }}">
+						{{ Form::select('styles[]', $styles, $compositeur->styles,array('multiple'=>'multiple', 'id' => 'nom','class' => 'form-control')) }}
+					</div>
+					{!! Form::submit('Envoyer', ['class' => 'btn btn-primary pull-right']) !!}
 					{!! Form::close() !!}
 				</div>
 			</div>

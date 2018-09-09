@@ -19,7 +19,7 @@
 						<th>Date de mort</th>
 						<th>Description</th>
 						<th>Source</th>
-						<th></th>
+						<th>Styles</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -33,6 +33,10 @@
 							<td>{!! $compositeur->date_mort !!}</td>
 							<td>{!! $compositeur->description !!}</td>
 							<td>{!! $compositeur->source !!}</td>
+							<td>@foreach($compositeur->styles as $style)
+								{!! $style->nom !!}
+							@endforeach
+							</td>
 							<td>{!! link_to_route('compositeur.show', 'Voir', [$compositeur->id], ['class' => 'btn btn-success btn-block']) !!}</td>
 							<td>{!! link_to_route('compositeur.edit', 'Modifier', [$compositeur->id], ['class' => 'btn btn-warning btn-block']) !!}</td>
 							<td>

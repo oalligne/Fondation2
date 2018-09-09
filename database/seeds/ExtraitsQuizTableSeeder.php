@@ -12,12 +12,12 @@ class ExtraitsQuizTableSeeder extends Seeder {
 
 	public function run()
 	{
-		DB::table('extraitsquiz')->delete();
+		DB::table('quiz_extrait')->delete();
 
 		for($i = 0; $i < 100; ++$i)
 		{
 			$date = $this->randDate();
-			DB::table('extraitsquiz')->insert([				
+			DB::table('quiz_extrait')->insert([				
 				'quiz_id' => rand(1, 25),
 				'extrait_id' => rand(1, 100),
 				'created_at' => $date,

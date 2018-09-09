@@ -12,12 +12,12 @@ class StylesCompositeurTableSeeder extends Seeder {
 
 	public function run()
 	{
-		DB::table('stylescompositeur')->delete();
+		DB::table('compositeur_style')->delete();
 
 		for($i = 0; $i < 5; ++$i)
 		{
 			$date = $this->randDate();
-			DB::table('stylescompositeur')->insert([
+			DB::table('compositeur_style')->insert([
 				'compositeur_id' => rand(1,10),
 				'style_id' => rand(1,5),
 				'created_at' => $date,

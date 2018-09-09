@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class ExtraitQuiz extends Model
 {
     //
-     protected $table = 'extraitsquiz';
+     protected $table = 'quiz_extrait';
 
 }

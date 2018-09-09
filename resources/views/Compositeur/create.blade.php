@@ -36,6 +36,15 @@
 					  	{!! Form::text('url_photo', null, ['class' => 'form-control', 'placeholder' => 'url_photo']) !!}
 					  	{!! $errors->first('url_photo', '<small class="help-block">:message</small>') !!}
 					</div>
+					<div class="form-group {{ $errors->has('styles') ? 'has-error' : '' }}">
+						<select multiple class="form-control" id="styles" name="styles[]">
+						    @foreach ($styles as $style)
+						        <option value="{{ $style->id }}">{{ $style->nom }}</option>
+						    @endforeach
+						</select>
+					</div>
+
+
 					{!! Form::submit('Envoyer', ['class' => 'btn btn-primary pull-right']) !!}
 					{!! Form::close() !!}
 				</div>

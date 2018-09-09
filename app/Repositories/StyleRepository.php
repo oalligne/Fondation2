@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Style;
+use Illuminate\Support\Str;
 
 class StyleRepository implements StyleRepositoryInterface
 {
@@ -27,13 +28,14 @@ class StyleRepository implements StyleRepositoryInterface
 		return $this->Style->paginate($n);
 	}
 
-	public function store(Array $inputs)
+	public function store($compositeur, $styles)
 	{
-		$Style = new $this->Style;		
+		//$styles = explode(',', $styles);
 
-		$this->saveStyle($Style, $inputs);
+		foreach ($styles as $style_id) {
 
-		return $Style;
+				$compositeur->styles()->attach($style_id);
+		}
 	}
 
 	public function getById($id)

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\CompositeurRepository;
+use App\Repositories\StyleRepository;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class CompositeurController extends Controller
 {
@@ -26,7 +29,7 @@ class CompositeurController extends Controller
     public function index()
     {
         //
-        $compositeurs = $this->compositeurRepository->getPaginate($this->nbrPerPage);
+        $compositeurs = $this->compositeurRepository->getWithCompositeurAndStylesPaginate($this->nbrPerPage);
         $links = $compositeurs->render();
 
         return view('Compositeur/index', compact('compositeurs', 'links'));
@@ -40,7 +43,9 @@ class CompositeurController extends Controller
     public function create()
     {
         //
-        return view('Compositeur/create');
+        //$styles = Style::pluck('nom', 'id');
+        $styles = DB::table('styles')->select('nom', 'id')->get();
+        return view('Compositeur/create', compact('styles'));
     }
 
     /**
@@ -49,12 +54,18 @@ class CompositeurController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,StyleRepository $styleRepository)
     {
         //
-        $compositeur = $this->compositeurRepository->store($request->all());
+        //dd(Input::get('styles'));
+        $inputs = array_merge($request->all());
 
-        return redirect('compositeur')->withOk("Le compositeur " . $compositeur->nom . " a été créé.");
+        $compositeur = $this->compositeurRepository->store($inputs);
+
+        $styleRepository->store($compositeur, Input::get('styles'));
+
+
+        return redirect(route('compositeur.index'));
     }
 
     /**
@@ -81,8 +92,10 @@ class CompositeurController extends Controller
     {
         //
         $compositeur = $this->compositeurRepository->getById($id);
+        //$styles = DB::table('styles')->select('nom', 'id')->get();
+        $styles = DB::table('styles')->pluck('nom', 'id');
 
-        return view('Compositeur/edit',  compact('compositeur'));
+        return view('Compositeur/edit',  compact('compositeur','styles'));
     }
 
     /**
@@ -95,7 +108,8 @@ class CompositeurController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->compositeurRepository->update($id, $request->all());
+        //dd(Input::get('styles'));
+        $this->compositeurRepository->update($id, $request->all(),Input::get('styles'));
         
         return redirect('compositeur')->withOk("Le compositeur " . $request->input('nom') . " a été modifié.");
     }
