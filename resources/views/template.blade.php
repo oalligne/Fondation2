@@ -43,7 +43,7 @@
 		          <a class="dropdown-item" href="{{URL::route('compositeur.index')}}">Compositeurs</a>
 		          <a class="dropdown-item" href="{{URL::route('style.index')}}">Styles</a>
 		          <a class="dropdown-item" href="{{URL::route('morceau.index')}}">Morceaux</a>
-		          <a class="dropdown-item" href="#">Extraits</a>
+		          <a class="dropdown-item" href="{{URL::route('extrait.index')}}">Extraits</a>
 		          <a class="dropdown-item" href="#">Utilisateurs</a>
 		          <a class="dropdown-item" href="#">Quiz</a>
 		        </div>

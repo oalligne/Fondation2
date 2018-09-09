@@ -9,4 +9,9 @@ class Extrait extends Model
     //
      protected $table = 'extraits';
 
+    public function morceau()
+    {
+        return $this->belongsTo('App\Morceau');
+    } 
+
 }
