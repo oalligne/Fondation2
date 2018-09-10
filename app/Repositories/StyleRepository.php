@@ -28,7 +28,14 @@ class StyleRepository implements StyleRepositoryInterface
 		return $this->Style->paginate($n);
 	}
 
-	public function store($compositeur, $styles)
+	public function store($inputs)
+	{
+		$Style = new $this->Style;		
+
+		$this->saveStyle($Style, $inputs);
+	}
+
+	public function storeStylesForCompositeur($compositeur, $styles)
 	{
 		//$styles = explode(',', $styles);
 
@@ -36,6 +43,7 @@ class StyleRepository implements StyleRepositoryInterface
 
 				$compositeur->styles()->attach($style_id);
 		}
+
 	}
 
 	public function getById($id)

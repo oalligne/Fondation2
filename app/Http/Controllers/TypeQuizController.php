@@ -3,19 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\StyleRepository;
+use App\Repositories\TypeQuizRepository;
 
-class StyleController extends Controller
+class TypeQuizController extends Controller
 {
-
-    protected $StyleRepository;
+    protected $TypeQuizRepository;
 
     protected $nbrPerPage = 4;
 
-
-    public function __construct(StyleRepository $StyleRepository)
+    public function __construct(TypeQuizRepository $TypeQuizRepository)
     {
-        $this->StyleRepository = $StyleRepository;
+        $this->TypeQuizRepository = $TypeQuizRepository;
     }
 
     /**
@@ -26,10 +24,10 @@ class StyleController extends Controller
     public function index()
     {
         //
-        $Styles = $this->StyleRepository->getPaginate($this->nbrPerPage);
-        $links = $Styles->render();
+        $TypeQuizs = $this->TypeQuizRepository->getPaginate($this->nbrPerPage);
+        $links = $TypeQuizs->render();
 
-        return view('Style/index', compact('Styles', 'links'));
+        return view('TypeQuiz/index', compact('TypeQuizs', 'links'));
     }
 
     /**
@@ -40,7 +38,7 @@ class StyleController extends Controller
     public function create()
     {
         //
-        return view('Style/create');
+        return view('TypeQuiz/create');
     }
 
     /**
@@ -52,9 +50,9 @@ class StyleController extends Controller
     public function store(Request $request)
     {
         //
-        $Style = $this->StyleRepository->store($request->all());
+        $TypeQuiz = $this->TypeQuizRepository->store($request->all());
 
-        return redirect('style')->withOk("Le Style a été créé.");
+        return redirect('typequiz')->withOk("Le TypeQuiz a été créé.");
     }
 
     /**
@@ -66,9 +64,9 @@ class StyleController extends Controller
     public function show($id)
     {
         //
-        $Style = $this->StyleRepository->getById($id);
+        $TypeQuiz = $this->TypeQuizRepository->getById($id);
 
-        return view('Style/show',  compact('Style'));
+        return view('TypeQuiz/show',  compact('TypeQuiz'));
     }
 
     /**
@@ -80,9 +78,9 @@ class StyleController extends Controller
     public function edit($id)
     {
         //
-        $Style = $this->StyleRepository->getById($id);
+        $TypeQuiz = $this->TypeQuizRepository->getById($id);
 
-        return view('Style/edit',  compact('Style'));
+        return view('TypeQuiz/edit',  compact('TypeQuiz'));
     }
 
     /**
@@ -95,9 +93,9 @@ class StyleController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->StyleRepository->update($id, $request->all());
+        $this->TypeQuizRepository->update($id, $request->all());
         
-        return redirect('style')->withOk("Le Style " . $request->input('nom') . " a été modifié.");
+        return redirect('typequiz')->withOk("Le Type de Quiz " . $request->input('nom') . " a été modifié.");
     }
 
     /**
@@ -109,7 +107,7 @@ class StyleController extends Controller
     public function destroy($id)
     {
         //
-        $this->StyleRepository->destroy($id);
+        $this->TypeQuizRepository->destroy($id);
 
         return back();
     }

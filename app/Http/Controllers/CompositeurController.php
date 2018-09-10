@@ -62,7 +62,7 @@ class CompositeurController extends Controller
 
         $compositeur = $this->compositeurRepository->store($inputs);
 
-        $styleRepository->store($compositeur, Input::get('styles'));
+        $styleRepository->storeStylesForCompositeur($compositeur, Input::get('styles'));
 
 
         return redirect(route('compositeur.index'));

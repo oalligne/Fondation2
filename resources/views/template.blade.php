@@ -44,6 +44,7 @@
 		          <a class="dropdown-item" href="{{URL::route('style.index')}}">Styles</a>
 		          <a class="dropdown-item" href="{{URL::route('morceau.index')}}">Morceaux</a>
 		          <a class="dropdown-item" href="{{URL::route('extrait.index')}}">Extraits</a>
+		          <a class="dropdown-item" href="{{URL::route('typequiz.index')}}">Type de quiz</a>
 		          <a class="dropdown-item" href="#">Utilisateurs</a>
 		          <a class="dropdown-item" href="#">Quiz</a>
 		        </div>
