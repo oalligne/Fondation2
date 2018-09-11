@@ -14,4 +14,9 @@ class Extrait extends Model
         return $this->belongsTo('App\Morceau');
     } 
 
+    public function quizs()
+	{
+		return $this->belongsToMany(Quiz::class);
+	} 
+
 }

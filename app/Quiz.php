@@ -10,8 +10,9 @@ class Quiz extends Model
     protected $table = 'quizzes';
     protected $fillable = ['code'];
 
-	public function quizs()
+	public function extraits()
 	{
-		return $this->belongsToMany(Quiz::class);
+		return $this->belongsToMany(Extrait::class);
 	} 
+
 }

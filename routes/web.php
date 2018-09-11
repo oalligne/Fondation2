@@ -17,5 +17,6 @@ Route::resource('style', 'StyleController');
 Route::resource('morceau', 'MorceauController');
 Route::resource('extrait', 'ExtraitController');
 Route::resource('typequiz', 'TypeQuizController');
+Route::resource('quiz', 'QuizController');
 
 //Route::post('contact', 'ContactController@postForm');
